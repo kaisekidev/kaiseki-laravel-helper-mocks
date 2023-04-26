@@ -26,7 +26,10 @@ if (!function_exists('resolve')) {
 if (!function_exists('config')) {
     function config(string $path = ''): mixed
     {
-        global $container;
+        $container = \Kaiseki\LaravelHelperMocks\Helper::getContainer();
+        if ($container === null) {
+            return null;
+        }
         $config = \Kaiseki\Config\Config::get($container);
         $current = $config->array('laravel');
         $paths = explode('.', $path);
