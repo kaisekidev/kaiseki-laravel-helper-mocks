@@ -30,7 +30,7 @@ if (!function_exists('config')) {
         if ($container === null) {
             return null;
         }
-        $config = \Kaiseki\Config\Config::get($container);
+        $config = \Kaiseki\Config\Config::fromContainer($container);
         $current = $config->array('laravel');
         $paths = explode('.', $path);
         foreach ($paths as $index) {

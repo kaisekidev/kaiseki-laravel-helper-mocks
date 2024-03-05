@@ -25,6 +25,7 @@ final class Helper
         if (!array_key_exists('Psr\Container\ContainerInterface', $interfaces)) {
             return null;
         }
+
         return $container;
     }
 }
