@@ -7,6 +7,7 @@ namespace Kaiseki\LaravelHelperMocks;
 use Psr\Container\ContainerInterface;
 
 use function array_key_exists;
+use function class_implements;
 
 final class Helper
 {
@@ -21,7 +22,7 @@ final class Helper
         if ($container === null) {
             return null;
         }
-        $interfaces = \Safe\class_implements($container);
+        $interfaces = class_implements($container);
         if (!array_key_exists('Psr\Container\ContainerInterface', $interfaces)) {
             return null;
         }
