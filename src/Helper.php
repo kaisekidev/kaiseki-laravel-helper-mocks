@@ -6,27 +6,15 @@ namespace Kaiseki\LaravelHelperMocks;
 
 use Psr\Container\ContainerInterface;
 
-use function array_key_exists;
-use function class_implements;
-
 final class Helper
 {
     /**
-     * Returns the container instance.
-     *
-     * @return ContainerInterface|null
+     * Returns the global container instance when it is a PSR container, otherwise null.
      */
-    public static function getContainer(): null|ContainerInterface
+    public static function getContainer(): ?ContainerInterface
     {
         global $container;
-        if ($container === null) {
-            return null;
-        }
-        $interfaces = class_implements($container);
-        if (!array_key_exists('Psr\Container\ContainerInterface', $interfaces)) {
-            return null;
-        }
 
-        return $container;
+        return $container instanceof ContainerInterface ? $container : null;
     }
 }
